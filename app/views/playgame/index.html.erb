@@ -1,0 +1,67 @@
+
+<div class="gamewrapper">
+	<div class="logout">
+		<%= link_to  destroy_user_session_path,method: :delete  do %>
+            Logout (<%=current_user.email%>)
+         <%end%>
+	</div>
+	<hr class="colorgraph"><br>
+		<div class="gamecontent">
+
+		<div class="gameleft">
+			<div class="timer">
+				Time Remaining
+			</div>
+		</div>
+
+		<div class="gameright">
+			<div class="runneriq">
+				Play Quiz
+			</div>
+
+			<div class="quizcontent">
+
+			
+			<% @quizzes.each_with_index do |quiz, index| %>
+				
+
+			<%= form_tag submit_quiz_playgame_index_path, remote: true,class:"question#{index+1} questionsquiz",id:'first_questions' do %>
+
+			<div class="counting">
+					Question <%= index+1 %> of <%= @quizzes.all.count %>
+				</div>
+
+
+				<div class="question"><%=quiz.question%></div>
+
+				<div class="options">
+					<div><%= radio_button_tag :options, quiz.optiona %> <%= quiz.optiona %></div>
+					<div><%= radio_button_tag :options, quiz.optionb %> <%= quiz.optionb %></div>
+					<div><%= radio_button_tag :options, quiz.optionc %> <%= quiz.optionc %></div>
+					<div><%= radio_button_tag :options, quiz.optiond %> <%= quiz.optiond %></div>
+					<div><%= hidden_field_tag :question_id, quiz.id %></div>
+					<div><%= hidden_field_tag :index, index+1 %></div>
+
+				</div>
+
+				<div class="form-actions next_btn">
+				<% if @quizcount>index+1 %>
+				    <%= submit_tag  "Next Question",class:"btn btn-default" %>
+				 <% else%>
+				 	<%= submit_tag  "Complete Quiz",class:"btn btn-default" %>
+
+				 <% end -%>
+				  </div>
+
+				<% end -%>
+			<% end -%>
+
+
+				
+			</div>
+
+		</div>
+			
+		</div>
+
+</div>

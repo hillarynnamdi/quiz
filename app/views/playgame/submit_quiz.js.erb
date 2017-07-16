@@ -1,0 +1,15 @@
+
+alert("<%=@output%>")
+
+
+<% if @quizcount>@index.to_i && @catc.nil? %>
+$(".question<%=@index.to_i%>").hide()
+$(".question<%=@index.to_i+1%>").slideDown(1000)
+
+<%else%>
+
+$(".question<%=@index.to_i%>").hide()
+$(".gameright").html("<div class="completed">you have completed the quiz game</div>")
+
+
+<%end%>

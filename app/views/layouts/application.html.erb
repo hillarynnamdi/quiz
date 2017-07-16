@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Temp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if notice.present?  %>
+
+<div class="success_alert" style="width:70%;margin:10px auto;height:auto !important;text-align:center;color:green">
+  	<div class="notice" style="padding:0px !important"> <%= notice %></div>
+</div>
+
+<% end -%>
+
+<% if alert.present? %>
+
+<div class="error_alert" style="width:70%;margin:10px auto;height:auto !important;;text-align:center;color:red">
+  	<div class="alert" style="padding:0px !important"><%= alert%></div>
+</div>
+
+<% end -%>
+
+<%= yield %>
+
+</body>
+</html>

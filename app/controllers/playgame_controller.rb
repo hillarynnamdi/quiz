@@ -3,8 +3,10 @@ class PlaygameController < ApplicationController
 
   
   def index
-  		@quizzes=Quiz.all
+  		@quizzes=Quiz.all.order("RANDOM()")
   		@quizcount=Quiz.all.count
+
+
   		
   end
   
@@ -16,20 +18,20 @@ class PlaygameController < ApplicationController
   	@find_id=Quiz.find(@question_id)
 
  
-    if @find_id.correct==params[:options]
+    #if @find_id.correct==params[:options]
 
-  	@output="Answer is correct"
+  	#@output="Answer is correct"
 
-  	elsif params[:options].nil?
+  	#elsif params[:options].nil?
   		
-  	@error="Choose an answer"
+  	#@error="Choose an answer"
 
-	else	
+	#else	
 
-	@output="Answer is wrong"
+	#@output="Answer is wrong"
   		
 
-  	end
+  	#end
 
 
 

@@ -10,7 +10,11 @@
 
 		<div class="gameleft">
 			<div class="timer">
-				Time Remaining
+				<div class="timeleft">Time Remaining</div>
+
+				<div class="timerread" id='timerread'><span class='minute'>10</span><span>:</span><span class='second'>10</span></div>
+
+
 			</div>
 		</div>
 
@@ -45,6 +49,13 @@
 				</div>
 
 				<div class="form-actions next_btn">
+
+				<% if index+1!=1 %>
+					<%=button_tag(type: 'button',class:"btn btn-default prevbtn",value:index+1) do
+						  content_tag(:strong, 'Previous')
+						end %>
+				 <% end -%>
+
 				<% if @quizcount==index+1 %>
 					<%= submit_tag  "Complete Quiz",class:"btn btn-default" %>
 				    

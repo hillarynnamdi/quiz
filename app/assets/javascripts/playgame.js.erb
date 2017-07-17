@@ -1,20 +1,79 @@
 
 
 $(document).ready(
-  setTimeout(function(){
-  $(".quizcontent :first-child").fadeIn("slow")
-},1000)
-)
+	setTimeout(function(){
+		$(".quizcontent :first-child").fadeIn("slow")
+	},1000)
+	)
+
+
+$(document).ready(	
+
+	setInterval(function(){
+		
+		var currentsec=$(".second").text()
+		var currentmin=$(".minute").text()
+
+		if (currentsec==00) {
+			currentsec=60
+			$(".second").text(currentsec-1)
+		}
+
+		else if (currentsec<=10) {
+			currentsec=currentsec-1
+			$(".second").text("0"+currentsec)
+
+		}
+		else{
+			$(".second").text(currentsec-1)
+		}
+
+		if (currentmin<=10 && currentsec==00) {
+			currentmin=currentmin-1
+			$(".minute").text("0"+currentmin)
+
+		}
+		else if(currentmin>10 && currentsec==00){
+			$(".minute").text(currentmin-1)
+		}
+
+		if (currentmin<=3) {
+
+				$(".minute").fadeToggle("fast")
+
+			
+			document.getElementById('timerread').style.color="red"
+		};
+
+
+		if (currentsec==00 && currentmin==00) {
+			
+			clearInterval();
+			alert("Time up buddy!")
+			$('#timerread').html("exhausted")
+		}
+
+		
+
+		
+
+	},1000)
+	)
+
+
 
 
 $(document).ready(
-function(){
-$(".options input[type='radio']").click(
-function(){
+	function(){
+		$(".prevbtn").click( 
+			function(){
+			var currentindex=$(this).val()
+			var previndex=currentindex-1
 
-
-
-}
-)
-}
-)
+			$(".question"+currentindex).slideUp("slow")
+			$(".question"+previndex).slideDown("slow")
+			
+		}
+			)
+	}
+	)

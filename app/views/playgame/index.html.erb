@@ -45,10 +45,11 @@
 				</div>
 
 				<div class="form-actions next_btn">
-				<% if @quizcount>index+1 %>
-				    <%= submit_tag  "Next Question",class:"btn btn-default" %>
+				<% if @quizcount==index+1 %>
+					<%= submit_tag  "Complete Quiz",class:"btn btn-default" %>
+				    
 				 <% else%>
-				 	<%= submit_tag  "Complete Quiz",class:"btn btn-default" %>
+				 	<%= submit_tag  "Next Question",class:"btn btn-default" %>
 
 				 <% end -%>
 				  </div>

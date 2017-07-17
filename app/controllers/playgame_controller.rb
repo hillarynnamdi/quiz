@@ -15,14 +15,14 @@ class PlaygameController < ApplicationController
   	@index=params[:index]
   	@find_id=Quiz.find(@question_id)
 
-  	if params[:options].nil?
-
-    @output="Choose an answer";
-
-
-    elsif @find_id.correct==params[:options]
+ 
+    if @find_id.correct==params[:options]
 
   	@output="Answer is correct"
+
+  	elsif params[:options].nil?
+  		
+  	@error="Choose an answer"
 
 	else	
 

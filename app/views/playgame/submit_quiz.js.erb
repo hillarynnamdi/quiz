@@ -1,15 +1,22 @@
 
+
+
+<% if !@error.present? && @quizcount!=@index.to_i %>
+
+$(".question<%=@index.to_i%>").slideUp("slow")
+$(".question<%=@index.to_i+1%>").slideDown("slow")
 alert("<%=@output%>")
 
+<%elsif !@error.present? && @quizcount==@index.to_i %>
 
-<% if @quizcount>@index.to_i && @catc.nil? %>
-$(".question<%=@index.to_i%>").hide()
-$(".question<%=@index.to_i+1%>").slideDown(1000)
+$(".question<%=@index.to_i%>").slideUp("slow")
+$(".gameright").html("<div class='completed'>You have completed the quiz game.</div>")
+
+
 
 <%else%>
 
-$(".question<%=@index.to_i%>").hide()
-$(".gameright").html("<div class="completed">you have completed the quiz game</div>")
-
+alert("<%=@error%>")
 
 <%end%>
+  

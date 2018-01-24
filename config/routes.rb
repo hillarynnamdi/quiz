@@ -4,8 +4,15 @@ Rails.application.routes.draw do
   resources :playgame do
     collection do 
       post 'submit_quiz'
+
+
     end
+     member do
+    get 'questn'
   end
+  end
+
+
 
   root 'playgame#index'
 

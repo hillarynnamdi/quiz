@@ -2,8 +2,9 @@
 
 $(document).ready(
 	setTimeout(function(){
-		$(".quizcontent :first-child").fadeIn("slow")
-	},1000)
+		$(".loader").hide("fast")
+		$(".quizcontent :first-child").fadeIn("6000")
+	},4000)
 	)
 
 
@@ -50,7 +51,7 @@ $(document).ready(
 			
 			clearInterval();
 			alert("Time up buddy!")
-			$('#timerread').html("exhausted")
+			$('#timerread').html("Exhausted") 
 		}
 
 		
@@ -70,10 +71,21 @@ $(document).ready(
 			var currentindex=$(this).val()
 			var previndex=currentindex-1
 
-			$(".question"+currentindex).slideUp("slow")
-			$(".question"+previndex).slideDown("slow")
+			$(".question"+currentindex).hide()
+			$(".question"+previndex).show()
 			
 		}
 			)
 	}
 	)
+
+
+$(document).ready(
+function(){
+$(".quizcontent input[type='radio']").change(
+function(){
+ alert($(this).val())
+}
+  )
+}
+  )

@@ -3,8 +3,21 @@
 
 <% if @quizcount!=@index.to_i %>
 
-$(".question<%=@index.to_i%>").slideUp("slow")
-$(".question<%=@index.to_i+1%>").slideDown("slow")
+$(".question<%=@index.to_i%>").hide()
+$(".question<%=@index.to_i+1%>").show()
+
+<%if @optio.nil?%>
+//alert($('.options :selected').val())
+$(".track_span_<%=@index.to_i%>").css({border:'1.5px solid red'})
+
+
+
+<%else%>
+
+$(".track_span_<%=@index.to_i%>").css({border:'1.5px solid lightgreen'})
+
+
+<%end%> 
 
 <%elsif @quizcount==@index.to_i %>
 

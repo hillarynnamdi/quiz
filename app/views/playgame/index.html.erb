@@ -10,20 +10,36 @@
 
 		<div class="gameleft">
 			<div class="timer">
-				<div class="timeleft">Time Remaining</div>
+				<div class="timeleft">Time Remaining</div> 
+				<div class="timerread" id='timerread'>00:<span class='minute'><%=@quizcount%></span><span>:</span><span class='second'>59</span></div>
 
-				<div class="timerread" id='timerread'><span class='minute'>10</span><span>:</span><span class='second'>10</span></div>
 
-
-			</div>
+			<div class="noofquestnans">
+				No of questions answered:<div class="numbans"><span>0</span><span>/<%=@quizcount%></span></div>
+			</div>	
+</div>
 		</div>
 
 		<div class="gameright">
 			<div class="runneriq">
-				Play Quiz
+				Demo Test App
+
+				<div class="track_questions">
+	<% @quizzes.each_with_index do |quiz, index| %>
+		<span class="track_span_span track_span_<%=index+1 %>"><%=link_to "#{index+1}",questn_playgame_path(index+1), remote:true, class:'paginatelink'  %></a></span>
+	<% end -%>
+
+
+
+
+
+</div>
 			</div>
 
+<div class="loader colorgraph"></div>
+
 			<div class="quizcontent">
+
 
 			
 			<% @quizzes.each_with_index do |quiz, index| %>
@@ -39,34 +55,34 @@
 				<div class="question"><%=quiz.question%></div>
 
 				<div class="options">
-					<div><%= radio_button_tag :options, quiz.optiona %> <%= quiz.optiona %></div>
-					<div><%= radio_button_tag :options, quiz.optionb %> <%= quiz.optionb %></div>
-					<div><%= radio_button_tag :options, quiz.optionc %> <%= quiz.optionc %></div>
-					<div><%= radio_button_tag :options, quiz.optiond %> <%= quiz.optiond %></div>
-					<div><%= hidden_field_tag :question_id, quiz.id %></div>
+					<div><%= radio_button_tag :options, quiz.optiona%> <%= quiz.optiona %></div>
+					<div><%= radio_button_tag :options, quiz.optionb %> <%= quiz.optionb %></div> 
+					<div><%= radio_button_tag :options, quiz.optionc %> <%= quiz.optionc %></div> 
+					<div><%= radio_button_tag :options, quiz.optiond %> <%= quiz.optiond %></div> 
+					<div><%= hidden_field_tag :question_id, quiz.id %></div> 
 					<div><%= hidden_field_tag :index, index+1 %></div>
-
 				</div>
 
 				<div class="form-actions next_btn">
 
 				<% if index+1!=1 %>
 					<%=button_tag(type: 'button',class:"btn btn-default prevbtn",value:index+1) do
-						  content_tag(:strong, 'Previous')
+						  content_tag(:strong, '<<Previous')
 						end %>
 				 <% end -%>
 
 				<% if @quizcount==index+1 %>
-					<%= submit_tag  "Complete Quiz",class:"btn btn-default" %>
+					<%= submit_tag  "Submit Test",class:"btn btn-default " %>
 				    
 				 <% else%>
-				 	<%= submit_tag  "Next Question",class:"btn btn-default" %>
+				 	<%= submit_tag  "Next>>",class:"btn btn-default" %>
 
 				 <% end -%>
 				  </div>
 
 				<% end -%>
 			<% end -%>
+
 
 
 				

@@ -14,27 +14,15 @@ class PlaygameController < ApplicationController
   def submit_quiz
   	@quizcount=Quiz.all.count
   	@question_id=params[:question_id]
+    @optio=params[:options]
   	@index=params[:index]
   	@find_id=Quiz.find(@question_id)
-
- 
-    #if @find_id.correct==params[:options]
-
-  	#@output="Answer is correct"
-
-  	#elsif params[:options].nil?
-  		
-  	#@error="Choose an answer"
-
-	#else	
-
-	#@output="Answer is wrong"
-  		
-
-  	#end
-
-
-
   	
+  end
+
+  def questn
+    @index=params[:id]
+
+    
   end
 end
